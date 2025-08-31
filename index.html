@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMEN EFFICIENCE | Votre Conformité Éclairage 100% Financée</title>
+    <meta name="description" content="Mettez vos bâtiments en conformité légale avec un système d'éclairage LED neuf, 100% financé par le dispositif CEE. Offre valable jusqu'à fin 2025.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- DESIGN SYSTEM & RESET --- */
+        :root {
+            --primary: #00D4FF; --success: #00ff88; --danger: #ff3366; --warning: #ffaa00;
+            --gray-950: #030712; --gray-900: #111827; --gray-800: #1f2937; --gray-700: #374151;
+            --text-light: #ffffff; --text-medium: #b8c5d6; --text-dark: #8898aa;
+            --radius-xl: 16px; --radius-2xl: 24px; --radius-full: 9999px;
+            --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif; background-color: var(--gray-950);
+            color: var(--text-light); -webkit-font-smoothing: antialiased; overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 112px 0; position: relative; }
+        @media (max-width: 768px) { .section { padding: 80px 0; } }
+
+        /* --- GLOBAL COMPONENTS --- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 14px 28px; font-weight: 700; font-size: 16px;
+            border-radius: var(--radius-full); border: none; cursor: pointer;
+            transition: all var(--transition); text-decoration: none;
+        }
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #00cc6a);
+            color: var(--gray-950); box-shadow: 0 4px 30px rgba(0, 255, 136, 0.3);
+        }
+        .btn-success:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 40px rgba(0, 255, 136, 0.4); }
+        .highlight {
+            background: linear-gradient(135deg, var(--success), var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-header h2 { font-size: 44px; font-weight: 800; margin-bottom: 24px; line-height: 1.2; }
+        .section-header p { font-size: 18px; color: var(--text-medium); max-width: 800px; margin: 0 auto; line-height: 1.6;}
+        .section-header .subtitle { font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; display: block; }
+        
+        /* --- HEADER & FLOATING CTA --- */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .header .logo { font-size: 26px; font-weight: 900; }
+        .floating-cta-bar {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(3, 7, 18, 0.9); backdrop-filter: blur(16px);
+            padding: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; justify-content: center; align-items: center; gap: 16px;
+            transform: translateY(100%); animation: slideUp 0.5s 1s forwards;
+        }
+        @keyframes slideUp { to { transform: translateY(0); } }
+        .floating-cta-bar .cta-text { font-weight: 600; }
+        @media (max-width: 768px) { .header .btn, .floating-cta-bar .cta-text { display: none;} }
+
+        /* --- HERO SECTION --- */
+        .hero { padding-top: 140px; padding-bottom: 60px; text-align: center; }
+        .hero h1 { font-size: 60px; font-weight: 900; line-height: 1.15; max-width: 1000px; margin: 0 auto 24px auto; }
+        .hero p.subtitle { font-size: 20px; color: var(--text-medium); max-width: 800px; margin: 0 auto 48px auto; }
+        .benefits-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
+        .benefit-card {
+            background: var(--gray-900); border: 1px solid var(--gray-800); border-radius: var(--radius-xl);
+            padding: 24px; text-align: left; transition: all var(--transition);
+        }
+        .benefit-card:hover { transform: translateY(-6px); border-color: var(--gray-700); }
+        .benefit-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;}
+        .benefit-card p { color: var(--text-dark); font-size: 15px; line-height: 1.6; }
+        @media (max-width: 992px) { .benefits-trio { grid-template-columns: 1fr; } }
+        
+        /* --- URGENCY COUNTDOWN SECTION --- */
+        .urgency-box { background: var(--gray-900); border-radius: var(--radius-2xl); padding: 48px; border: 1px solid var(--gray-800); }
+        .countdown-container {
+            text-align: center; border: 2px solid var(--danger); border-radius: var(--radius-xl);
+            padding: 32px; background: linear-gradient(145deg, rgba(255, 51, 102, 0.05), rgba(3, 7, 18, 0.2));
+        }
+        .countdown-container h3 { font-size: 20px; color: var(--danger); margin-bottom: 8px; }
+        .countdown-container p { color: var(--text-medium); margin-bottom: 24px; font-size: 15px; max-width: 600px; margin-left: auto; margin-right: auto;}
+        .countdown-timer { display: flex; justify-content: center; gap: 24px; }
+        .timer-unit { text-align: center; }
+        .timer-unit .number { font-size: 48px; font-weight: 800; color: var(--text-light); line-height: 1; }
+        .timer-unit .label { font-size: 14px; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        /* --- CEE FINANCING SECTION --- */
+        .financing-box {
+            display: grid; grid-template-columns: 1fr 3fr; gap: 48px; align-items: center;
+            background: var(--gray-900); border-radius: var(--radius-2xl); padding: 48px; border: 1px solid var(--gray-800);
+        }
+        .financing-icon { width: 120px; height: auto; margin: 0 auto; }
+        .financing-box h3 { font-size: 24px; margin-bottom: 16px; }
+        .financing-box p { color: var(--text-medium); line-height: 1.6; }
+        .financing-box a { color: var(--primary); text-decoration: none; font-weight: 600;}
+        
+        /* --- ELIGIBILITY SECTION --- */
+        .eligibility-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .eligibility-card {
+            background: var(--gray-900); border: 1px solid var(--gray-800); border-radius: var(--radius-xl);
+            padding: 32px 24px; text-align: center;
+        }
+        .eligibility-card .icon { color: var(--success); width: 48px; height: 48px; margin: 0 auto 24px auto; }
+        .eligibility-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .eligibility-card p { color: var(--text-dark); font-size: 15px; line-height: 1.6; }
+
+        /* GURU ADDITION START: PARTNER SECTION STYLES */
+        .partner-box {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 48px;
+            align-items: center;
+            background: var(--gray-900);
+            border-radius: var(--radius-2xl);
+            padding: 48px;
+            border: 1px solid var(--gray-800);
+            text-align: left;
+        }
+        .partner-logo {
+            width: 100%;
+            height: auto;
+        }
+        .partner-box h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .partner-box p {
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .partner-benefits {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            color: var(--text-medium);
+            font-size: 15px;
+            font-weight: 500;
+        }
+        /* GURU ADDITION END */
+
+        /* --- CALCULATOR --- */
+        .calculator-layout { display: grid; grid-template-columns: 45% 55%; gap: 48px; align-items: center; }
+        .form-label { display: block; font-size: 16px; font-weight: 500; color: var(--text-medium); margin-bottom: 12px; }
+        .slider-group { display: flex; align-items: center; gap: 16px; }
+        .slider { flex-grow: 1; -webkit-appearance: none; height: 8px; background: var(--gray-700); border-radius: var(--radius-full); cursor: pointer;}
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; background: var(--success); border-radius: 50%; }
+        .slider-value-input {
+            font-weight: 700; color: var(--primary); font-size: 16px;
+            background-color: var(--gray-800); border: 1px solid var(--gray-700);
+            border-radius: 8px; padding: 8px 12px; width: 80px; text-align: center;
+            -moz-appearance: textfield;
+        }
+        .slider-value-input::-webkit-outer-spin-button,
+        .slider-value-input::-webkit-inner-spin-button {
+            -webkit-appearance: none; margin: 0;
+        }
+        .results-panel { background: linear-gradient(145deg, var(--gray-800), var(--gray-900)); border-radius: var(--radius-2xl); padding: 40px; border: 1px solid var(--gray-700); text-align: center; }
+        .result-item.highlight .result-label { font-size: 18px; color: var(--text-dark); margin-bottom: 16px; }
+        .result-item.highlight .result-value { font-size: 64px; background: linear-gradient(135deg, var(--success), #33ffaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; line-height: 1;}
+        .calculator-disclaimer { text-align: center; margin-top: 32px; font-size: 14px; color: var(--text-dark); }
+        
+        /* --- FINAL CTA --- */
+        .cta-options { display: flex; justify-content: center; gap: 24px; margin-top: 48px; flex-wrap: wrap; }
+        .cta-option-card {
+            background: var(--gray-900); border: 1px solid var(--gray-800); border-radius: var(--radius-xl);
+            padding: 32px; width: 300px; text-align: center; transition: all var(--transition);
+        }
+        .cta-option-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);}
+        .cta-option-card h3 { font-size: 20px; }
+
+        /* --- Contact Form Styles --- */
+        .contact-form-container {
+            max-width: 700px;
+            margin: 48px auto 0 auto;
+            background: var(--gray-900);
+            padding: 32px;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--gray-800);
+        }
+        .contact-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .form-group {
+            margin-bottom: 0;
+        }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        .form-input {
+            width: 100%;
+            background: var(--gray-800);
+            border: 1px solid var(--gray-700);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 16px;
+            color: var(--text-light);
+            transition: all var(--transition);
+        }
+        .form-input::placeholder {
+            color: var(--text-dark);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+        }
+
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 1024px) {
+            .calculator-layout { grid-template-columns: 1fr; gap: 64px; }
+            .result-item.highlight .result-value {font-size: 56px;}
+        }
+        @media (max-width: 900px) {
+            .financing-box, .partner-box { grid-template-columns: 1fr; text-align: center; }
+            .partner-logo { max-width: 250px; margin: 0 auto 32px auto; }
+            .partner-benefits { grid-template-columns: 1fr; text-align: center; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 48px; }
+            .section-header h2 { font-size: 36px; }
+            .contact-form-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 500px) {
+            .timer-unit .number { font-size: 32px; }
+            .hero h1 { font-size: 40px; }
+            .partner-benefits { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">LUMEN EFFICIENCE</div>
+                <a href="#contact" class="btn btn-success">Valider mon projet 0€</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="floating-cta-bar">
+        <span class="cta-text"><strong>Financement 100% CEE :</strong> L'opportunité se termine fin 2025.</span>
+        <a href="#contact" class="btn btn-success">Parler à un expert</a>
+    </div>
+
+    <main>
+        <!-- ======== HERO SECTION ======== -->
+        <section class="hero">
+            <div class="container">
+                <h1>Votre Installation d'Éclairage LED Neuve <span class="highlight">100% Financée</span></h1>
+                <p class="subtitle">
+                   Assurez votre conformité légale européenne avec une installation neuve, subventionnée intégralement par le dispositif CEE.
+                   <br>
+                   <span style="font-size: 1.2em; font-weight: 600; display: inline-block; margin-top: 12px;">
+                       <span class="highlight">0€ de reste à charge</span>, <span class="highlight">100% bénéfice</span>, <span class="highlight">100% conformité</span>
+                   </span>
+                </p>
+                <a href="#calculator" class="btn btn-success" style="padding: 20px 40px; font-size: 18px;">
+                    Estimer mon financement
+                </a>
+                
+                <div class="benefits-trio">
+                    <div class="benefit-card">
+                        <h3>✅ Conformité Légale Européenne</h3>
+                        <p>Anticipez l'obligation du Décret Tertiaire. Transformez une contrainte réglementaire en une opportunité financière.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>✨ Équipement LED Haute Performance</h3>
+                        <p>Recevez des luminaires industriels 250W IP65, garantis 70 000h, pour une performance et une durabilité maximales.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>💰 Économies Immédiates et Garanties</h3>
+                        <p>Réduisez drastiquement votre facture d'électricité dès le premier jour, sans aucun investissement de votre part.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== URGENCY COUNTDOWN SECTION ======== -->
+        <section class="section" style="background: var(--gray-900);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Une Double Urgence : Légale et Financière</span>
+                    <h2>Le financement à 100% se termine fin 2025. La mise en conformité est obligatoire pour 2030.</h2>
+                    <p>Vous faites face à une dépense future obligatoire. Saisissez aujourd'hui l'opportunité de la couvrir intégralement avant qu'il ne soit trop tard.</p>
+                </div>
+                <div class="urgency-box">
+                    <div class="countdown-container">
+                        <h3>Fin du dispositif de financement intégral CEE :</h3>
+                        <div class="countdown-timer">
+                            <div class="timer-unit"><div id="days" class="number">--</div><div class="label">Jours</div></div>
+                            <div class="timer-unit"><div id="hours" class="number">--</div><div class="label">Heures</div></div>
+                            <div class="timer-unit"><div id="minutes" class="number">--</div><div class="label">Minutes</div></div>
+                            <div class="timer-unit"><div id="seconds" class="number">--</div><div class="label">Secondes</div></div>
+                        </div>
+                        <p style="margin-top: 24px;">Après cette date, le niveau des aides est incertain et sera très probablement revu à la baisse, laissant un reste à charge pour les entreprises.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======== CEE FINANCING EXPLANATION SECTION ======== -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Comment est-ce possible ?</span>
+                    <h2>Un Mécanisme Officiel Garanti par l'État</h2>
+                </div>
+                <div class="financing-box">
+                    <svg class="financing-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+                        <rect width="1200" height="800" fill="#003399"/>
+                        <g transform="translate(600,400) scale(33.333)">
+                            <g id="star">
+                                <g id="cone">
+                                    <polygon id="triangle" points="0,0 0,1 .5,1" transform="translate(0,-1) rotate(18)"/>
+                                    <use xlink:href="#triangle" transform="scale(-1,1)"/>
+                                </g>
+                                <use xlink:href="#cone" transform="rotate(72)"/>
+                                <use xlink:href="#cone" transform="rotate(144)"/>
+                                <use xlink:href="#cone" transform="rotate(216)"/>
+                                <use xlink:href="#cone" transform="rotate(288)"/>
+                            </g>
+                            <g id="stars" fill="#ffcc00">
+                                <use xlink:href="#star" y="-6"/>
+                                <use xlink:href="#star" y="6"/>
+                                <use xlink:href="#star" x="-6"/>
+                                <use xlink:href="#star" x="6"/>
+                                <use xlink:href="#star" x="-3" y="-5.196"/>
+                                <use xlink:href="#star" x="3" y="-5.196"/>
+                                <use xlink:href="#star" x="-3" y="5.196"/>
+                                <use xlink:href="#star" x="3" y="5.196"/>
+                                <use xlink:href="#star" x="-5.196" y="-3"/>
+                                <use xlink:href="#star" x="5.196" y="-3"/>
+                                <use xlink:href="#star" x="-5.196" y="3"/>
+                                <use xlink:href="#star" x="5.196" y="3"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <div>
+                        <h3>Le Dispositif des Certificats d'Économies d'Énergie (CEE)</h3>
+                        <p>
+                            Issu de <strong>directives européennes</strong>, le dispositif CEE oblige les fournisseurs d'énergie (EDF, TotalEnergies, etc.) à financer des actions d'efficacité énergétique. En installant des LED, vous générez des "CEE" qu'ils valorisent pour payer <strong>l'intégralité de votre projet : matériel et installation</strong>. C'est un mécanisme officiel, encadré par la loi, qui vous permet de vous mettre en conformité gratuitement.
+                            <a href="https://www.ecologie.gouv.fr/dispositif-des-certificats-deconomies-denergie" target="_blank" rel="noopener noreferrer">En savoir plus sur le site du gouvernement.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== ELIGIBILITY SECTION ======== -->
+        <section class="section" style="background: var(--gray-900);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Êtes-vous concerné ?</span>
+                    <h2>À Qui S'adresse Cette Opportunité ?</h2>
+                    <p>Ce dispositif de financement intégral est conçu pour les professionnels et les bâtiments répondant à certains critères clés. Vérifiez si votre projet correspond.</p>
+                </div>
+                <div class="eligibility-grid">
+                    <div class="eligibility-card">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M9 12h6.375m-6.375 5.25h6.375M5.25 21v-2.25a2.25 2.25 0 012.25-2.25h8.25a2.25 2.25 0 012.25 2.25V21" /></svg>
+                        <h3>Bâtiments Tertiaires</h3>
+                        <p>Entrepôts, usines, ateliers, garages, bureaux, grandes surfaces commerciales et autres bâtiments professionnels.</p>
+                    </div>
+                    <div class="eligibility-card">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-8.25v8.25m-10.5 0h15m-15 0a8.25 8.25 0 0015 0m-15 0a8.25 8.25 0 0115 0m-15 0H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H19.5" /></svg>
+                        <h3>Volume d'Éclairage</h3>
+                        <p>Projets impliquant le remplacement d'un minimum de 5 à 10 points lumineux, selon la nature de l'éclairage existant.</p>
+                    </div>
+                    <div class="eligibility-card">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.5h-3.031a1.5 1.5 0 01-1.5-1.5V16.5m-3.375 0V9.75M9 16.5h3.375a1.5 1.5 0 001.5-1.5v-1.5a1.5 1.5 0 00-1.5-1.5H9" /></svg>
+                        <h3>Statut Professionnel</h3>
+                        <p>Vous devez être propriétaire ou locataire du bâtiment (avec accord du propriétaire) et posséder un numéro SIRET valide.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GURU ADDITION START: INSTALLATION PARTNER SECTION -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">UN PARTENAIRE DE CONFIANCE</span>
+                    <h2>Une Installation Gérée par des Experts Certifiés</h2>
+                    <p>Pour garantir une mise en œuvre parfaite de votre projet, nous collaborons exclusivement avec des installateurs qualifiés. Votre installation sera prise en charge par notre partenaire expert A-I-TECH.</p>
+                </div>
+                <div class="partner-box">
+                    <svg class="partner-logo" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="leaf-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#65c18c"/>
+                                <stop offset="100%" stop-color="#3b8c6e"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 80 10 L 125 45 L 125 80 L 95 80 L 95 60 L 105 60 L 105 70 L 115 70 L 115 52 Z" fill="#2d64a8"/>
+                        <path d="M 78.6,86.1 C 44.4,124.3 2.1,114.3 2.2,68.2 2.3,22.1 57.5,1.9 90.5,34.9 91,35.4 90.1,36.7 89.4,36.2 60.2,8.8 15,26.5 15,68 c 0,41.5 35.1,47.5 64.2,19.3 0.6,-0.6 1.8,0.4 1.2,1 z" fill="url(#leaf-gradient)"/>
+                        <text x="140" y="55" font-family="Inter, sans-serif" font-size="30" font-weight="900" fill="#374151">A-I-TECH</text>
+                        <text x="142" y="85" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#8898aa">
+                            <tspan x="142" dy="0">ÉNERGIES RENOUVELABLES</tspan>
+                            <tspan x="142" dy="1.2em">& & SOLUTIONS D'ÉCONOMIE D'ÉNERGIE</tspan>
+                        </text>
+                    </svg>
+                    <div>
+                        <h3>A-I-TECH : Votre Expert en Efficacité Énergétique</h3>
+                        <p>A-I-TECH est un spécialiste reconnu dans le domaine des énergies renouvelables. Leurs équipes de techniciens certifiés assurent une installation rapide, conforme aux normes les plus strictes (RGE, Qualifelec), et optimisée pour un rendement maximal. Vous bénéficiez de leur expertise sans débourser un centime.</p>
+                        <ul class="partner-benefits">
+                            <li>✅ Techniciens Qualifiés</li>
+                            <li>✅ Respect des Délais</li>
+                            <li>✅ Matériel Haut de Gamme</li>
+                            <li>✅ Installation Garantie</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- GURU ADDITION END -->
+
+        <!-- ======== CALCULATOR SECTION ======== -->
+        <section class="section" id="calculator" style="background: var(--gray-900);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Votre Simulation Instantanée</span>
+                    <h2>Estimez Votre Financement</h2>
+                    <p>Utilisez les curseurs ou tapez directement les nombres pour découvrir immédiatement le montant de la prime CEE qui finance votre projet.</p>
+                </div>
+                <div class="calculator-layout">
+                    <div class="calculator-form">
+                        <div class="form-group" style="margin-bottom: 24px;">
+                            <label for="luminairesSliderReplace" class="form-label">Nombre de points lumineux à remplacer</label>
+                            <div class="slider-group">
+                                <span style="font-weight: 700;">5</span>
+                                <input type="range" min="5" max="300" value="50" class="slider" id="luminairesSliderReplace" aria-label="Nombre de luminaires à remplacer">
+                                <input type="number" min="5" max="300" value="50" class="slider-value-input" id="luminairesValueInputReplace">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="luminairesSliderCreate" class="form-label">Nombre de points lumineux à créer</label>
+                            <div class="slider-group">
+                                <span style="font-weight: 700;">0</span>
+                                <input type="range" min="0" max="300" value="0" class="slider" id="luminairesSliderCreate" aria-label="Nombre de luminaires à créer">
+                                <input type="number" min="0" max="300" value="0" class="slider-value-input" id="luminairesValueInputCreate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results-panel">
+                        <div class="result-item highlight">
+                            <div class="result-label">MONTANT TOTAL DE LA PRIME CEE ESTIMÉE</div>
+                            <div class="result-value" id="totalBenefit">0 €</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="calculator-disclaimer">
+                    * Cette simulation est une estimation basée sur des barèmes standards. Le montant final de la prime sera confirmé après une étude technique gratuite de votre projet.
+                </p>
+            </div>
+        </section>
+
+        <!-- ======== FINAL CTA SECTION ======== -->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Bénéficiez De Cette Opportunité!</h2>
+                    <p>Validez votre projet 0€ aujourd'hui, avant la fin du dispositif. Remplissez vos informations ci-dessous, puis un expert CEE vous contactera sous 24h pour confirmer votre éligibilité et lancer votre dossier de financement.</p>
+                    
+                    <div class="contact-form-container">
+                        <form id="contact-form" class="contact-form-grid" onsubmit="event.preventDefault();">
+                            <div class="form-group">
+                                <input type="text" id="companyName" class="form-input" placeholder="Nom de votre société" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="contactName" class="form-input" placeholder="Votre nom complet" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" class="form-input" placeholder="Votre email" required>
+                            </div>
+                             <div class="form-group">
+                                <input type="tel" id="phone" class="form-input" placeholder="Votre téléphone" required>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="cta-options">
+                        <a href="tel:0612520977" style="text-decoration: none; color: inherit;"><div class="cta-option-card"><h3>📞 Demander un rappel</h3></div></a>
+                        <a id="whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><div class="cta-option-card"><h3>💬 Discuter sur WhatsApp</h3></div></a>
+                        <a id="email-link" href="#" style="text-decoration: none; color: inherit;"><div class="cta-option-card"><h3>✉️ Envoyer un email</h3></div></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Countdown Timer ---
+        const countdownDate = new Date("Jan 1, 2026 00:00:00").getTime();
+        
+        const countdownTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.querySelector(".countdown-container").innerHTML = "<h3>L'opportunité du financement à 100% est terminée.</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+        }, 1000);
+
+        // --- CEE Financing Calculator ---
+        const luminairesSliderReplace = document.getElementById('luminairesSliderReplace');
+        const luminairesValueInputReplace = document.getElementById('luminairesValueInputReplace');
+        const luminairesSliderCreate = document.getElementById('luminairesSliderCreate');
+        const luminairesValueInputCreate = document.getElementById('luminairesValueInputCreate');
+        const totalBenefitEl = document.getElementById('totalBenefit');
+
+        const config = {
+            newPower: 250,
+            ceeMultiplier: 0.0075,
+            avgCeeRate: 70
+        };
+
+        function calculateAndDisplay() {
+            const numToReplace = parseInt(luminairesValueInputReplace.value, 10) || 0;
+            const numToCreate = parseInt(luminairesValueInputCreate.value, 10) || 0;
+            const totalLuminaires = numToReplace + numToCreate;
+            
+            const ceeKwhCumac = totalLuminaires * config.newPower * config.avgCeeRate;
+            const ceeSubsidyValue = ceeKwhCumac * config.ceeMultiplier;
+
+            animateValue(totalBenefitEl, ceeSubsidyValue, '€');
+            updateContactLinks();
+        }
+
+        function animateValue(element, end, suffix) {
+            let start = parseFloat(element.textContent.replace(/[^0-9.-]+/g, "")) || 0;
+            if (start === end) return;
+            const duration = 800;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (end - start) + start);
+                element.textContent = `${currentValue.toLocaleString('fr-FR')} ${suffix}`;
+                if (progress < 1) { 
+                    window.requestAnimationFrame(step); 
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        function setupInputSync(slider, input) {
+            slider.addEventListener('input', () => {
+                input.value = slider.value;
+                calculateAndDisplay();
+            });
+
+            input.addEventListener('input', () => {
+                let value = parseInt(input.value, 10);
+                const min = parseInt(slider.min, 10);
+                const max = parseInt(slider.max, 10);
+                if (isNaN(value)) return;
+                if (value < min) value = min;
+                if (value > max) value = max;
+                
+                input.value = value;
+                slider.value = value;
+                calculateAndDisplay();
+            });
+        }
+
+        setupInputSync(luminairesSliderReplace, luminairesValueInputReplace);
+        setupInputSync(luminairesSliderCreate, luminairesValueInputCreate);
+
+        // --- Dynamic Contact Link Generation ---
+        const formElements = {
+            company: document.getElementById('companyName'),
+            name: document.getElementById('contactName'),
+            email: document.getElementById('email'),
+            phone: document.getElementById('phone'),
+            luminairesReplace: luminairesValueInputReplace,
+            luminairesCreate: luminairesValueInputCreate,
+            prime: totalBenefitEl,
+            whatsappLink: document.getElementById('whatsapp-link'),
+            emailLink: document.getElementById('email-link')
+        };
+        
+        const WHATSAPP_NUMBER = '33612520977';
+        const EMAIL_ADDRESS = 'hafidf@hotmail.fr';
+        
+        function updateContactLinks() {
+            const company = formElements.company.value || '[Société non précisée]';
+            const name = formElements.name.value || '[Nom non précisé]';
+            const email = formElements.email.value || '[Email non précisé]';
+            const phone = formElements.phone.value || '[Téléphone non précisé]';
+            const numLuminairesReplace = formElements.luminairesReplace.value;
+            const numLuminairesCreate = formElements.luminairesCreate.value;
+            const estimatedPrime = formElements.prime.textContent;
+            
+            const whatsappMessage = `Bonjour,
+Je souhaite valider mon projet d'éclairage à 0€ avant fin 2025.
+Voici les détails de mon projet :
+- Société: ${company}
+- Nom: ${name}
+- Email: ${email}
+- Téléphone: ${phone}
+- Points lumineux à remplacer: ${numLuminairesReplace}
+- Points lumineux à créer: ${numLuminairesCreate}
+- Prime CEE totale estimée: ${estimatedPrime}
+
+Pouvez-vous me recontacter ?
+Merci.`;
+            
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+            formElements.whatsappLink.href = whatsappUrl;
+            
+            const emailSubject = `Validation projet éclairage 0€ - ${company}`;
+            const emailBody = `Bonjour,
+Je souhaite valider mon projet d'éclairage à 0€ avant la fin du dispositif en 2025.
+
+Voici les informations concernant mon projet et mes coordonnées :
+--------------------------------------------------
+- Société: ${company}
+- Nom du contact: ${name}
+- Email: ${email}
+- Téléphone: ${phone}
+--------------------------------------------------
+- Nombre de points lumineux à remplacer: ${numLuminairesReplace}
+- Nombre de points lumineux à créer: ${numLuminairesCreate}
+- Montant total de la prime CEE estimée: ${estimatedPrime}
+--------------------------------------------------
+
+Merci de bien vouloir me contacter pour confirmer mon éligibilité et lancer le dossier de financement.
+
+Cordialement,
+${name}`;
+
+            const emailUrl = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            formElements.emailLink.href = emailUrl;
+        }
+
+        document.getElementById('contact-form').addEventListener('input', updateContactLinks);
+        
+        calculateAndDisplay(); 
+    });
+</script>
+
+</body>
+</html>
