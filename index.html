@@ -239,6 +239,11 @@
             .contact-form-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 500px) {
+            .countdown-timer { 
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+             }
             .timer-unit .number { font-size: 32px; }
             .hero h1 { font-size: 40px; }
             .partner-benefits { grid-template-columns: 1fr; }
@@ -370,7 +375,6 @@
             <div class="container">
                 <div class="section-header">
                     <span class="subtitle">Êtes-vous concerné ?</span>
-                    <h2>À Qui S'adresse Cette Opportunité ?</h2>
                     <p>Ce dispositif de financement intégral est conçu pour les professionnels et les bâtiments répondant à certains critères clés. Vérifiez si votre projet correspond.</p>
                 </div>
                 <div class="eligibility-grid">
@@ -445,7 +449,6 @@
                         <div class="form-group" style="margin-bottom: 24px;">
                             <label for="luminairesSliderReplace" class="form-label">Nombre de points lumineux à remplacer</label>
                             <div class="slider-group">
-                                <span style="font-weight: 700;">5</span>
                                 <input type="range" min="5" max="300" value="50" class="slider" id="luminairesSliderReplace" aria-label="Nombre de luminaires à remplacer">
                                 <input type="number" min="5" max="300" value="50" class="slider-value-input" id="luminairesValueInputReplace">
                             </div>
@@ -454,7 +457,6 @@
                         <div class="form-group">
                             <label for="luminairesSliderCreate" class="form-label">Nombre de points lumineux à créer</label>
                             <div class="slider-group">
-                                <span style="font-weight: 700;">0</span>
                                 <input type="range" min="0" max="300" value="0" class="slider" id="luminairesSliderCreate" aria-label="Nombre de luminaires à créer">
                                 <input type="number" min="0" max="300" value="0" class="slider-value-input" id="luminairesValueInputCreate">
                             </div>
