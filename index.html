@@ -309,10 +309,9 @@
             align-items: center;
             flex-wrap: wrap;
         }
-        .footer-logos svg {
+        .footer-logos svg, .footer-logos img { /* Applied styles to both SVG and IMG */
             height: 45px;
             width: auto;
-            fill: var(--text-dark);
         }
         .footer-bottom {
             text-align: center;
@@ -583,7 +582,7 @@
         </section>
     </main>
 
-    <!-- HERO DEV EDIT START: Footer Section -->
+    <!-- HERO DEV EDIT: Footer Section Updated -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -600,9 +599,7 @@
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <p>
-                        <strong>Responsable publication :</strong><br>
-                        Aitech<br>
-                        <a href="mailto:contact@aitech-isolation.com">contact@aitech-isolation.com</a>
+                        <a href="mailto:hafid@aitech-france.com">hafid@aitech-france.com</a>
                     </p>
                 </div>
                 <div class="footer-column">
@@ -614,12 +611,38 @@
                 <div class="footer-column">
                     <h4>Certifications</h4>
                     <div class="footer-logos" aria-label="Logos de certifications">
-                        <!-- European Union Energy Logo -->
-                        <svg viewBox="0 0 120 80" role="img" aria-label="Logo Energie Union Européenne"><rect width="120" height="80" fill="#039"></rect><circle cx="60" cy="40" r="26.667" fill="none" stroke="#FC0" stroke-width="6.667"></circle><g fill="#FC0" transform="translate(60,40)"><g id="f_s"><g id="f_c"><polygon points="0,0 0,1 .5,1" transform="translate(0,-5) rotate(18)"></polygon><use xlink:href="#f_c" transform="scale(-1,1)"></use></g><use xlink:href="#f_c" transform="rotate(72)"></use><use xlink:href="#f_c" transform="rotate(144)"></use><use xlink:href="#f_c" transform="rotate(216)"></use><use xlink:href="#f_c" transform="rotate(288)"></use></g><g transform="scale(6.667)"><use xlink:href="#f_s" transform="rotate(15)"></use><use xlink:href="#f_s" transform="rotate(45)"></use><use xlink:href="#f_s" transform="rotate(75)"></use><use xlink:href="#f_s" transform="rotate(105)"></use><use xlink:href="#f_s" transform="rotate(135)"></use><use xlink:href="#f_s" transform="rotate(165)"></use></g></g></svg>
-                        <!-- Qualibat Logo -->
-                        <svg viewBox="0 0 150 50" role="img" aria-label="Logo Qualibat"><rect width="150" height="50" fill="transparent"></rect><text x="75" y="32" font-family="Inter, sans-serif" font-size="24" font-weight="700" text-anchor="middle">QUALIBAT</text></svg>
-                        <!-- RGE Logo -->
-                        <svg viewBox="0 0 100 50" role="img" aria-label="Logo RGE"><rect width="100" height="50" fill="transparent"></rect><text x="50" y="32" font-family="Inter, sans-serif" font-size="30" font-weight="800" text-anchor="middle">RGE</text></svg>
+                        <!-- European Union Flag -->
+                        <svg viewBox="0 0 1200 800" role="img" aria-label="Drapeau de l'Union Européenne">
+                            <rect width="1200" height="800" fill="#003399"/>
+                            <g transform="translate(600,400) scale(33.333)">
+                                <g id="footer_star">
+                                    <g id="footer_cone">
+                                        <polygon points="0,0 0,1 .5,1" transform="translate(0,-1) rotate(18)"/>
+                                        <use xlink:href="#footer_cone" transform="scale(-1,1)"/>
+                                    </g>
+                                    <use xlink:href="#footer_cone" transform="rotate(72)"/>
+                                    <use xlink:href="#footer_cone" transform="rotate(144)"/>
+                                    <use xlink:href="#footer_cone" transform="rotate(216)"/>
+                                    <use xlink:href="#footer_cone" transform="rotate(288)"/>
+                                </g>
+                                <g fill="#ffcc00">
+                                    <use xlink:href="#footer_star" y="-6"/>
+                                    <use xlink:href="#footer_star" y="6"/>
+                                    <use xlink:href="#footer_star" x="-6"/>
+                                    <use xlink:href="#footer_star" x="6"/>
+                                    <use xlink:href="#footer_star" x="-3" y="-5.196"/>
+                                    <use xlink:href="#footer_star" x="3" y="-5.196"/>
+                                    <use xlink:href="#footer_star" x="-3" y="5.196"/>
+                                    <use xlink:href="#footer_star" x="3" y="5.196"/>
+                                    <use xlink:href="#footer_star" x="-5.196" y="-3"/>
+                                    <use xlink:href="#footer_star" x="5.196" y="-3"/>
+                                    <use xlink:href="#footer_star" x="-5.196" y="3"/>
+                                    <use xlink:href="#footer_star" x="5.196" y="3"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <!-- Qualibat RGE Image -->
+                        <img src="https://aitech-isolation-87.fr/uploads/media/images/cms/medias/5c3510e2bcfa4d6239d2c1d5244e8146a55b0cc8.png" alt="Logo Qualibat RGE">
                     </div>
                 </div>
             </div>
@@ -628,7 +651,6 @@
             </div>
         </div>
     </footer>
-    <!-- HERO DEV EDIT END -->
 
 
 <script>
@@ -736,7 +758,7 @@
         };
         
         const WHATSAPP_NUMBER = '33612520977';
-        const EMAIL_ADDRESS = 'hafidf@hotmail.fr';
+        const EMAIL_ADDRESS = 'hafid@aitech-france.com';
         
         function updateContactLinks() {
             const company = formElements.company.value || '[Société non précisée]';
