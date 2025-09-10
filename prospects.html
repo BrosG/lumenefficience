@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospects - Lumen Efficience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 25px 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e8ecf0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .btn:hover, .btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .btn-secondary:hover, .btn-secondary:active {
+            box-shadow: 0 6px 20px rgba(127, 140, 141, 0.3);
+        }
+
+        .prospects-list {
+            display: none;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .prospects-list.show {
+            display: block;
+        }
+
+        .prospect-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .prospect-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+
+        .prospect-company {
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .prospect-email {
+            color: #7f8c8d;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .prospect-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-email {
+            flex: 1;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-email:active, .btn-delete:active {
+            transform: scale(0.95);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 2px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px 20px;
+            color: #95a5a6;
+        }
+
+        .empty-state .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Animation pour mobile */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .prospect-item {
+            animation: slideIn 0.3s ease;
+        }
+
+        /* Optimisations tactiles */
+        @media (hover: none) {
+            .btn:hover {
+                transform: none;
+            }
+            
+            .btn:active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Prospects</h1>
+            <p>Suite à ma visite</p>
+        </div>
+
+        <div class="main-content">
+            <div class="success-message" id="successMessage">
+                ✓ Prospect ajouté avec succès !
+            </div>
+
+            <form id="prospectForm">
+                <div class="form-group">
+                    <label for="name">👤 Nom du prospect</label>
+                    <input type="text" id="name" name="name" required autocomplete="given-name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">🏢 Entreprise</label>
+                    <input type="text" id="company" name="company" required autocomplete="organization">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">📧 Email</label>
+                    <input type="email" id="email" name="email" required autocomplete="email">
+                </div>
+                
+                <button type="submit" class="btn" id="submitBtn">
+                    Ajouter le Prospect
+                </button>
+            </form>
+
+            <button class="btn btn-secondary" id="toggleProspects">
+                📋 Voir les prospects (<span id="prospectCount">0</span>)
+                <span class="toggle-icon">▼</span>
+            </button>
+
+            <div class="prospects-list" id="prospectsList">
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number" id="totalProspects">0</div>
+                        <div class="stat-label">Prospects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="emailsSent">0</div>
+                        <div class="stat-label">Emails</div>
+                    </div>
+                </div>
+
+                <div id="prospectsContainer">
+                    <div class="empty-state">
+                        <div class="icon">📭</div>
+                        <p>Aucun prospect encore</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Stockage des prospects
+        let prospects = JSON.parse(localStorage.getItem('prospects') || '[]');
+        let emailsSentCount = parseInt(localStorage.getItem('emailsSentCount') || '0');
+
+        // Template d'email
+        const emailTemplate = `Bonjour {name},
+je vous remercie de votre intérêt.
+Pour faire suite à votre demande d'information, vous trouverez ci-dessous le fonctionnement détaillé de cette opportunité de financement de votre modernisation et remplacement de vos luminaires en technologie LED.
+
+Comment une opération d'éclairage peut-elle être 100% financée ?
+La réponse est simple : ce n'est pas nous qui payons, et ce n'est pas vous non plus.
+Il s'agit du dispositif des Certificats d'Économies d'Énergie (CEE), un programme piloté par l'État. Il oblige les fournisseurs d'énergie (comme notre partenaire TotalEnergies) à financer activement des projets de réduction de consommation chez les professionnels.
+
+En résumé : votre modernisation est financée par leur obligation légale. C'est un système gagnant-gagnant encadré par la loi (fiche d'opération BAT-EQ-127).
+
+Vos bénéfices directs en 4 points :
+✔ Zéro euro à débourser. Ni avance de frais, ni facture. Le matériel (projecteurs LED haute performance) et l'installation par nos techniciens qualifiés sont intégralement pris en charge.
+✔ Jusqu'à 80% d'économies immédiates sur le poste "éclairage" de votre facture d'électricité, dès la mise en service.
+✔ Zéro démarche administrative. Notre équipe s'occupe de la totalité du montage et du suivi du dossier. Votre temps est précieux, nous le gérons pour vous.
+✔ Qualité et sécurité garanties. L'ensemble de l'installation est validé par un organisme de contrôle indépendant et agréé (Apave, Bureau Veritas, etc.) pour certifier la conformité et la qualité des travaux.
+
+Pour visualiser concrètement le résultat et la qualité de la technologie que nous installons, vous pouvez consulter notre site :
+https://financement-led.com
+
+La prochaine étape ?
+Le plus simple est de planifier un court appel de 15 minutes. Cela nous permettra de valider l'éligibilité technique de vos locaux et de répondre à toutes vos questions.
+
+Vous pouvez réserver directement le créneau qui vous arrange dans mon agenda ou répondre simplement à cet e-mail avec vos disponibilités.
+
+Je reste à votre entière disposition.
+
+Bien cordialement,
+
+LUMEN EFFICIENCE | Votre Conformité Éclairage 100% Financée
+https://financement-led.com`;
+
+        function saveData() {
+            localStorage.setItem('prospects', JSON.stringify(prospects));
+            localStorage.setItem('emailsSentCount', emailsSentCount.toString());
+        }
+
+        function addProspect(name, company, email) {
+            const prospect = {
+                id: Date.now(),
+                name: name,
+                company: company,
+                email: email,
+                dateAdded: new Date().toLocaleDateString('fr-FR')
+            };
+            prospects.unshift(prospect); // Ajouter au début pour voir les plus récents
+            saveData();
+            renderProspects();
+            updateStats();
+            showSuccessMessage();
+        }
+
+        function deleteProspect(id) {
+            if (confirm('Supprimer ce prospect ?')) {
+                prospects = prospects.filter(p => p.id !== id);
+                saveData();
+                renderProspects();
+                updateStats();
+            }
+        }
+
+        function sendEmail(prospect) {
+            const personalizedEmail = emailTemplate.replace('{name}', prospect.name);
+            const subject = `Suite à ma visite - Financement LED 100% - ${prospect.company}`;
+            
+            // Remplacez par votre vraie adresse email
+            const yourEmail = 'votre.email@example.com';
+            
+            const mailtoUrl = `mailto:${prospect.email}?cc=${yourEmail}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(personalizedEmail)}`;
+            
+            window.location.href = mailtoUrl;
+            
+            emailsSentCount++;
+            saveData();
+            updateStats();
+        }
+
+        function renderProspects() {
+            const container = document.getElementById('prospectsContainer');
+            
+            if (prospects.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📭</div>
+                        <p>Aucun prospect encore</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = prospects.slice(0, 10).map(prospect => `
+                <div class="prospect-item">
+                    <div class="prospect-name">${prospect.name}</div>
+                    <div class="prospect-company">${prospect.company}</div>
+                    <div class="prospect-email">${prospect.email}</div>
+                    <div class="prospect-actions">
+                        <button class="btn-email" onclick="sendEmail(${JSON.stringify(prospect).replace(/"/g, '&quot;')})">
+                            📧 Envoyer
+                        </button>
+                        <button class="btn-delete" onclick="deleteProspect(${prospect.id})">
+                            🗑️
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateStats() {
+            const count = prospects.length;
+            document.getElementById('totalProspects').textContent = count;
+            document.getElementById('prospectCount').textContent = count;
+            document.getElementById('emailsSent').textContent = emailsSentCount;
+        }
+
+        function showSuccessMessage() {
+            const msg = document.getElementById('successMessage');
+            msg.style.display = 'block';
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        // Toggle prospects list
+        document.getElementById('toggleProspects').addEventListener('click', function() {
+            const list = document.getElementById('prospectsList');
+            const icon = this.querySelector('.toggle-icon');
+            
+            if (list.classList.contains('show')) {
+                list.classList.remove('show');
+                icon.classList.remove('rotated');
+            } else {
+                list.classList.add('show');
+                icon.classList.add('rotated');
+            }
+        });
+
+        // Form submission
+        document.getElementById('prospectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            if (name && company && email) {
+                addProspect(name, company, email);
+                this.reset();
+                
+                // Animation du bouton
+                const btn = document.getElementById('submitBtn');
+                btn.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
+                btn.textContent = '✓ Ajouté !';
+                
+                setTimeout(() => {
+                    btn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                    btn.textContent = 'Ajouter le Prospect';
+                }, 2000);
+            }
+        });
+
+        // Initialisation
+        initGeolocation();
+        renderProspects();
+        updateStats();
+
+        // Auto-focus sur le premier champ au chargement
+        document.getElementById('name').focus();
+
+        // Nettoyer le watch de géolocalisation quand on quitte la page
+        window.addEventListener('beforeunload', () => {
+            if (locationWatchId) {
+                navigator.geolocation.clearWatch(locationWatchId);
+            }
+        });
+    </script>
+</body>
+</html>
