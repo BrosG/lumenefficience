@@ -697,7 +697,7 @@ financement-led.com`;
             const personalizedEmail = emailTemplate.replace('{name}', prospect.name);
             const subject = `Suite à ma visite - Financement LED 100% - ${prospect.company}`;
             
-            const yourEmail = 'hafid@aitech-france.com';
+            const yourEmail = 'votre.email@example.com';
             
             const mailtoUrl = `mailto:${prospect.email}?cc=${yourEmail}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(personalizedEmail)}`;
             
@@ -874,6 +874,7 @@ financement-led.com`;
             console.log('Initialisation de l\'application...');
             loadData();
             initGeolocation();
+            initPWA();
             renderProspects();
             updateStats();
             
