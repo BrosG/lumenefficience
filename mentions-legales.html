@@ -4,20 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
-    <title>Mentions Légales - Financement-LED.com</title>
-    <meta name="description" content="Consultez les mentions légales du site financement-led.com, propriété de la société Aitech.">
-    <meta name="robots" content="noindex, follow"> <!-- Noindex is often preferred for legal pages -->
+    <!-- HERO DEV EDIT START: SEO Implementation -->
+    <title>Mentions Légales - Financement-LED.com | Conformité CEE</title>
+    <meta name="description" content="Consultez les mentions légales du site Financement-LED.com, propriété de la société Aitech. Informations sur l'éditeur, l'hébergement, la propriété intellectuelle et la protection des données personnelles.">
+    <meta name="keywords" content="mentions légales financement LED, Aitech, Financement-LED.com, conformité CEE, données personnelles, propriété intellectuelle">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://financement-led.com/mentions-legales.html">
+
+    <!-- Open Graph Meta Tags (for social sharing) -->
+    <meta property="og:title" content="Mentions Légales - Financement-LED.com">
+    <meta property="og:description" content="Informations légales complètes concernant Financement-LED.com et la société Aitech.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://financement-led.com/mentions-legales.html">
+    <meta property="og:image" content="https://financement-led.com/og-image.webp"> <!-- Note: Create and upload an image at this URL -->
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mentions Légales - Financement-LED.com">
+    <meta name="twitter:description" content="Informations légales complètes concernant Financement-LED.com et la société Aitech.">
+    <meta name="twitter:image" content="https://financement-led.com/og-image.webp"> <!-- Note: Use the same image as Open Graph -->
+    <!-- HERO DEV EDIT END -->
 
     <!-- Generated Favicon (same as main page) -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%2300D4FF' d='M50 0C27.9 0 10 17.9 10 40c0 18.3 12.1 33.6 28 38.2V90h-8v10h36V90h-8V78.2c15.9-4.6 28-19.9 28-38.2C90 17.9 72.1 0 50 0z M50 70c-16.6 0-30-13.4-30-30S33.4 10 50 10s30 13.4 30 30S66.6 70 50 70z'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%2300D4FF' d='M50 0C27.9 0 10 17.9 10 40c0 18.3 12.1 33.6 28 38.2V90h-8v10h36V90h-8V78.2c15.9-4.6 28-19.9 28-38.2C90 17.9 72.1 0 50 0z M50 70c-16.6 0-30-13.4-30-30S33.4 10 50 10s30 13.4 30 30S66.6 70 50 70z'/%3E%3C/svg%3E">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        /* Using the exact same design system for consistency */
+        /* --- DESIGN SYSTEM & RESET --- */
         :root {
             --primary: #00D4FF; --success: #00ff88; --danger: #ff3366; --warning: #ffaa00;
             --gray-950: #030712; --gray-900: #111827; --gray-800: #1f2937; --gray-700: #374151;
@@ -34,13 +52,13 @@
         .container { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
         /* --- HEADER --- */
-        .header {
+        .site-header {
             position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
             background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-        .header .logo { font-size: 26px; font-weight: 900; }
+        .site-header .logo { font-size: 26px; font-weight: 900; color: var(--text-light); text-decoration: none;}
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             padding: 12px 24px; font-weight: 600; font-size: 15px;
@@ -112,10 +130,10 @@
 </head>
 <body>
 
-    <header class="header">
+    <header class="site-header">
         <div class="container">
             <div class="header-inner">
-                <div class="logo">Financement-LED.com</div>
+                <a href="index.html" class="logo">Financement-LED.com</a>
                 <a href="index.html" class="btn">← Retour au site</a>
             </div>
         </div>
@@ -145,7 +163,7 @@
                     Le responsable de la publication du site est la société Aitech.
                 </p>
                 <ul>
-                    <li><strong>Contact :</strong> <a href="mailto:contact@aitech-isolation.com">contact@aitech-isolation.com</a></li>
+                    <li><strong>Contact :</strong> <a href="mailto:hafid@aitech-france.com">hafid@aitech-france.com</a></li>
                 </ul>
                 
                 <h2>3. Hébergement du site</h2>
@@ -153,9 +171,9 @@
                     Le site est hébergé par :
                 </p>
                 <ul>
-                    <li><strong>Hébergeur :</strong> [Nom de l'hébergeur, ex: OVH, Netlify, Vercel]</li>
-                    <li><strong>Adresse :</strong> [Adresse de l'hébergeur]</li>
-                    <li><strong>Contact :</strong> [Contact de l'hébergeur]</li>
+                    <li><strong>Hébergeur :</strong> OVH SAS</li>
+                    <li><strong>Adresse :</strong> 2 rue Kellermann, 59100 Roubaix, France</li>
+                    <li><strong>Contact :</strong> <a href="https://www.ovh.com/fr/support/" target="_blank" rel="noopener noreferrer">Support OVH</a></li>
                 </ul>
 
                 <h2>4. Propriété intellectuelle</h2>
@@ -181,7 +199,7 @@
 
                 <h2>7. Droit applicable et attribution de juridiction</h2>
                 <p>
-                    Tout litige en relation avec l’utilisation du site financement-led.com est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de [Ville du tribunal, ex: Limoges].
+                    Tout litige en relation avec l’utilisation du site financement-led.com est soumis au droit français. Il est fait attribution exclusive de juridiction aux tribunaux compétents de Limoges.
                 </p>
             </div>
         </div>
