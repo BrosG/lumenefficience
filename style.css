@@ -183,19 +183,80 @@ body {
 
 /* --- FOOTER --- */
 .footer {
-    background-color: var(--gray-950); padding: 64px 0; border-top: 1px solid var(--gray-800);
-    font-size: 14px; color: var(--text-dark);
+    background-color: var(--gray-950);
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--gray-800);
+    font-size: 15px;
+    color: var(--text-medium);
 }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; align-items: start; }
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 48px;
+    align-items: start;
+}
 .footer-column h4 {
-    font-size: 16px; color: var(--text-light); margin-bottom: 20px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.05em;
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    padding-bottom: 8px;
 }
-.footer-column p, .footer-column a { color: var(--text-dark); line-height: 1.7; margin-bottom: 8px; text-decoration: none; transition: color var(--transition); }
-.footer-column a:hover { color: var(--primary); }
-.footer-logos { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-.footer-logos svg, .footer-logos img { height: 45px; width: auto; }
-.footer-bottom { text-align: center; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--gray-800); }
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--primary);
+}
+.footer-column p {
+    line-height: 1.8;
+    margin-bottom: 8px;
+    color: var(--text-medium);
+}
+.footer-column p strong {
+    color: var(--text-light);
+    font-weight: 500;
+}
+.footer-column a {
+    display: block;
+    color: var(--text-medium);
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: all var(--transition);
+}
+.footer-column a:hover {
+    color: var(--primary);
+    padding-left: 8px;
+}
+.footer-logos {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.footer-logos svg, .footer-logos img {
+    height: 45px;
+    width: auto;
+    opacity: 0.8;
+    transition: opacity var(--transition);
+}
+.footer-logos svg:hover, .footer-logos img:hover {
+    opacity: 1;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gray-800);
+    font-size: 14px;
+    color: var(--text-dark);
+}
 
 /* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 1024px) {
